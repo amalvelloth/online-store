@@ -53,12 +53,12 @@ function ProductDetailPage() {
           {/* Quantity */}
           <div className="flex items-center gap-2 my-4">
             <button
-              className="w-8 h-8 border rounded"
+              className="w-8 h-8 bg-gray-300 hover:bg-gray-400 text-xl rounded"
               onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
             >-</button>
             <span className="px-4">{quantity}</span>
             <button
-              className="w-8 h-8 border rounded"
+              className="w-8 h-8 bg-gray-300 hover:bg-gray-400 text-xl rounded"
               onClick={() => setQuantity(prev => prev + 1)}
             >+</button>
           </div>
