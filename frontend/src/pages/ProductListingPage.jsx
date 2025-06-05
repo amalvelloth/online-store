@@ -9,7 +9,6 @@ function ProductListingPage() {
   const [sort, setSort] = useState('name');
   const [order, setOrder] = useState('asc');
   const limit = 3;
-  
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -25,6 +24,8 @@ function ProductListingPage() {
     };
     fetchProducts();
   }, [page, sort, order]);
+
+  if (!products.length) return <div className='pt-[7rem] m-auto text-3xl font-bold text-center'>Please wait...</div>;
 
   return (
     <div className="container mx-auto p-4 pt-[5rem]">
