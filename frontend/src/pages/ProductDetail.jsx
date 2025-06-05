@@ -32,57 +32,73 @@ function ProductDetailPage() {
   if (!product) return <div className='pt-[7rem] m-auto text-3xl text-center'>Loading...</div>;
 
   return (
-    <div className="container mx-auto p-4 md:pt-7rem] pt-[5rem]">
-      <div className="flex flex-col md:flex-row gap-8">
+    <div className="p-4 max-w-6xl mx-auto md:pt-7rem] pt-[5rem]">
+    
+
+      {/* Product Section */}
+      <div className="flex flex-col md:flex-row gap-10">
+        {/* Left side - images */}
         <div className="md:w-1/2">
-          <img src={product.image} alt={product.name} className="w-full h-96 object-cover rounded" />
-          <div className="flex gap-2 mt-4">
-            <img src={product.image} alt="thumb1" className="w-20 h-20 object-cover rounded" />
-            <img src={product.image} alt="thumb2" className="w-20 h-20 object-cover rounded" />
-            <img src={product.image} alt="thumb3" className="w-20 h-20 object-cover rounded" />
+          <img src={product.image} alt={product.name} className="w-full h-[300px] object-cover border" />
+          <div className="flex gap-3 mt-4">
+            <img src={product.image} alt="thumb1" className="w-20 h-20 object-cover border" />
+            <img src={product.image} alt="thumb2" className="w-20 h-20 object-cover border" />
+            <img src={product.image} alt="thumb3" className="w-20 h-20 object-cover border" />
           </div>
         </div>
-        <div className="md:w-1/2">
-          <h1 className="text-2xl font-bold">{product.name}</h1>
-          <p className="text-gray-600">Id: {product.id}</p>
-          <p className="text-xl text-blue-600">${product.price}</p>
+
+        {/* Right side - details */}
+        <div className="md:w-1/2 space-y-3">
+          <h2 className="text-2xl font-semibold">{product.name}</h2>
+          <p>Id: {product.id}</p>
+          <p className="text-xl text-blue-600">Price: ${product.price}</p>
           <p className="text-green-600">{product.inventory > 0 ? 'In Stock' : 'Out of Stock'}</p>
-          <div className="my-4">
-            <label className="mr-2">Quantity:</label>
-            <input
-              type="number"
-              min="1"
-              value={quantity}
-              onChange={(e) => setQuantity(parseInt(e.target.value))}
-              className="w-16 p-2 border rounded"
-            />
+
+          {/* Quantity */}
+          <div className="flex items-center gap-2 my-4">
+            <button
+              className="w-8 h-8 border rounded"
+              onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
+            >-</button>
+            <span className="px-4">{quantity}</span>
+            <button
+              className="w-8 h-8 border rounded"
+              onClick={() => setQuantity(prev => prev + 1)}
+            >+</button>
           </div>
+
+          {/* Add to Cart */}
           <button
-            className="bg-blue-600 text-white px-6 py-2 rounded"
             onClick={handleAddToCart}
             disabled={product.inventory === 0}
+            className="bg-gray-300 hover:bg-gray-400 px-6 py-2 rounded disabled:opacity-50"
           >
             Add to Cart
           </button>
-          <div className="mt-4">
-            <h3 className="text-lg font-semibold">Description</h3>
-            <p>{product.description}</p>
-          </div>
-          <div className="mt-4">
-            <h3 className="text-lg font-semibold">Specifications</h3>
-            <ul className="list-disc pl-5">
-              <li>Brand: {product.brand}</li>
-              <li>Model Number: {product.modelNumber}</li>
-              <li>Dimensions: {product.dimensions}</li>
-              <li>Weight: {product.weight}</li>
-              <li>Material: {product.material}</li>
-              <li>Color: {product.color}</li>
-              <li>Origin: {product.origin}</li>
-            </ul>
-          </div>
         </div>
+      </div>
+
+      {/* Description */}
+      <div className="mt-10 border-t pt-6">
+        <h3 className="text-lg font-semibold mb-2">Description</h3>
+        <p className="text-gray-700">{product.description}</p>
+      </div>
+
+      {/* Specifications */}
+      <div className="mt-8 border-t pt-6">
+        <h3 className="text-lg font-semibold mb-2">Specifications</h3>
+        <ul className="space-y-1 text-gray-700">
+          <li><strong>Brand:</strong> {product.brand}</li>
+          <li><strong>Model Number:</strong> {product.modelNumber}</li>
+          <li><strong>Dimensions:</strong> {product.dimensions}</li>
+          <li><strong>Weight:</strong> {product.weight}</li>
+          <li><strong>Material:</strong> {product.material}</li>
+          <li><strong>Color:</strong> {product.color}</li>
+          <li><strong>Origin:</strong> {product.origin}</li>
+        </ul>
       </div>
     </div>
   );
 }
+
 export default ProductDetailPage;

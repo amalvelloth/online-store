@@ -48,16 +48,23 @@ function ProductListingPage() {
           const discountedPrice = (product.price * 0.9).toFixed(2);
           return (
             <div key={product._id || product.id} className="border rounded-lg p-4 bg-white shadow">
-              <img src={product.image} alt={product.name} className="w-full h-64 object-cover mb-4" />
+              <Link to={`/product/${product._id || product.id}`}>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-64 object-cover mb-4 hover:opacity-90 transition duration-200"
+                />
+              </Link>
               <h3 className="text-lg font-semibold">{product.name}</h3>
 
               <p className="text-gray-500 line-through">${product.price}</p>
-              <p className="text-red-600 font-semibold">10% OFF: ${discountedPrice}</p>
+              <p className="text-red-600 font-semibold">10% OFF: ${(product.price * 0.9).toFixed(2)}</p>
 
               <Link to={`/product/${product._id || product.id}`}>
                 <button className="mt-2 bg-gray-600 text-white px-4 py-2 rounded">Add to Cart</button>
               </Link>
             </div>
+
           );
         })}
 
