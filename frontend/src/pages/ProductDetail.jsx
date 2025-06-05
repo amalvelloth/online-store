@@ -29,7 +29,7 @@ function ProductDetailPage() {
     setCartCount(count);
   };
 
-  if (!product) return <div className='pt-[7rem] m-auto text-3xl text-center'>Loading...</div>;
+  if (!product) return <div className='pt-[7rem] m-auto text-3xl font-bold text-center'>Loading...</div>;
 
   return (
     <div className="p-4 max-w-6xl mx-auto pt-[5rem] md:pt-[7rem]">

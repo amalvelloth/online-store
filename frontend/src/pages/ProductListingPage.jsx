@@ -9,6 +9,7 @@ function ProductListingPage() {
   const [sort, setSort] = useState('name');
   const [order, setOrder] = useState('asc');
   const limit = 3;
+  
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -71,20 +72,21 @@ function ProductListingPage() {
       </div>
       <div className="flex justify-center mt-4">
         <button
-          className="px-4 py-2 bg-gray-300 rounded mr-2 hover:bg-black hover:text-white"
-          disabled={page === 1}
-          onClick={() => setPage(page - 1)}
-        >
-          Previous
-        </button>
+  className="px-4 py-2 bg-gray-300 rounded mr-2 hover:bg-black hover:text-white transition-all duration-300"
+  disabled={page === 1}
+  onClick={() => setPage(page - 1)}
+>
+  Previous
+</button>
 
-        <button
-          className="px-4 py-2 bg-gray-300 rounded hover:bg-black hover:text-white"
-          disabled={page * limit >= total}
-          onClick={() => setPage(page + 1)}
-        >
-          Next
-        </button>
+<button
+  className="px-4 py-2 bg-gray-300 rounded hover:bg-black hover:text-white transition-all duration-300"
+  disabled={page * limit >= total}
+  onClick={() => setPage(page + 1)}
+>
+  Next
+</button>
+
 
       </div>
     </div>

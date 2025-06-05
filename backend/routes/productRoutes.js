@@ -23,4 +23,23 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+
+router.get('/', async (req, res) => {
+  try {
+    const { sort = 'name', order = 'asc', page = 1, limit = 3 } = req.query;
+    const sortObj = {};
+    sortObj[sort] = order === 'asc' ? 1 : -1;
+
+    const skip = (parseInt(page) - 1) * parseInt(limit);
+
+    const [products, total] = await Promise.all([
+      Product.find().sort(sortObj).skip(skip).limit(parseInt(limit)),
+      Product.countDocuments()
+    ]);
+
+    res.json({ products, total });
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
 module.exports = router;
