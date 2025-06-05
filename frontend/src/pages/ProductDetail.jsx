@@ -10,11 +10,11 @@ function ProductDetailPage() {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const res = await axios.get(`http://localhost:5000/api/products/${id}`);
+      const res = await axios.get(`https://online-store-backend-qvgt.onrender.com/api/products/${id}`);
       setProduct(res.data);
     };
     const fetchCart = async () => {
-      const res = await axios.get('http://localhost:5000/api/cart');
+      const res = await axios.get('https://online-store-backend-qvgt.onrender.com/api/cart');
       const count = res.data.items.reduce((sum, item) => sum + item.quantity, 0);
       setCartCount(count);
     };
@@ -23,13 +23,13 @@ function ProductDetailPage() {
   }, [id]);
 
   const handleAddToCart = async () => {
-    await axios.post('http://localhost:5000/api/cart', { productId: id, quantity });
-    const res = await axios.get('http://localhost:5000/api/cart');
+    await axios.post('https://online-store-backend-qvgt.onrender.com/api/cart', { productId: id, quantity });
+    const res = await axios.get('https://online-store-backend-qvgt.onrender.com/api/cart');
     const count = res.data.items.reduce((sum, item) => sum + item.quantity, 0);
     setCartCount(count);
   };
 
-  if (!product) return <div>Loading...</div>;
+  if (!product) return <div className='pt-[7rem] m-auto text-3xl text-center'>Loading...</div>;
 
   return (
     <div className="container mx-auto p-4">
