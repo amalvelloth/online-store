@@ -32,9 +32,7 @@ function ProductDetailPage() {
   if (!product) return <div className='pt-[7rem] m-auto text-3xl text-center'>Loading...</div>;
 
   return (
-    <div className="p-4 max-w-6xl mx-auto md:pt-7rem] pt-[5rem]">
-    
-
+    <div className="p-4 max-w-6xl mx-auto pt-[5rem] md:pt-[7rem]">
       {/* Product Section */}
       <div className="flex flex-col md:flex-row gap-10">
         {/* Left side - images */}
