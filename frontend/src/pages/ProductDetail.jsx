@@ -33,9 +33,7 @@ function ProductDetailPage() {
 
   return (
     <div className="p-4 max-w-6xl mx-auto pt-[5rem] md:pt-[7rem]">
-      {/* Product Section */}
       <div className="flex flex-col md:flex-row gap-10">
-        {/* Left side - images */}
         <div className="md:w-1/2">
           <img src={product.image} alt={product.name} className="w-full h-[300px] object-cover border" />
           <div className="flex gap-3 mt-4">
@@ -45,7 +43,7 @@ function ProductDetailPage() {
           </div>
         </div>
 
-        {/* Right side - details */}
+
         <div className="md:w-1/2 space-y-3">
           <h2 className="text-2xl font-semibold">{product.name}</h2>
           <p>Id: {product.id}</p>

@@ -47,7 +47,7 @@ function ProductListingPage() {
         {(products || []).map((product) => {
           const discountedPrice = (product.price * 0.9).toFixed(2);
           return (
-            <div key={product._id || product.id} className="border rounded-lg p-4 bg-white shadow">
+            <div key={product._id || product.id} className="border p-4 bg-white shadow">
               <Link to={`/product/${product._id || product.id}`}>
                 <img
                   src={product.image}
@@ -71,19 +71,21 @@ function ProductListingPage() {
       </div>
       <div className="flex justify-center mt-4">
         <button
-          className="px-4 py-2 bg-gray-300 rounded mr-2 disabled:opacity-50"
+          className="px-4 py-2 bg-gray-300 rounded mr-2 hover:bg-black hover:text-white"
           disabled={page === 1}
           onClick={() => setPage(page - 1)}
         >
           Previous
         </button>
+
         <button
-          className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+          className="px-4 py-2 bg-gray-300 rounded hover:bg-black hover:text-white"
           disabled={page * limit >= total}
           onClick={() => setPage(page + 1)}
         >
           Next
         </button>
+
       </div>
     </div>
   );
