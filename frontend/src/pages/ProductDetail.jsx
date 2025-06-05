@@ -32,7 +32,7 @@ function ProductDetailPage() {
   if (!product) return <div className='pt-[7rem] m-auto text-3xl text-center'>Loading...</div>;
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 md:pt-7rem] pt-[5rem]">
       <div className="flex flex-col md:flex-row gap-8">
         <div className="md:w-1/2">
           <img src={product.image} alt={product.name} className="w-full h-96 object-cover rounded" />
