@@ -7,7 +7,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 const products = [
   {
     id: 'TY4674',
-    name: 'GUrban Blaze: Racer',
+    name: 'Urban Blaze: Racer',
     price: 37,
     image: 'https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1732883581_1212321.jpg?format=webp&w=1080&dpr=1.3',
     description: 'Lorem ipsum dolor sit amet...',
